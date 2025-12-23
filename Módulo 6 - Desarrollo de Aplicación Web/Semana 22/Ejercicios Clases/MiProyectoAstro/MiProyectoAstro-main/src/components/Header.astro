@@ -1,0 +1,15 @@
+---
+const brand = Astro.props.brand ?? "Mi Pagina";
+---
+
+<header>
+  <div class="container row" style="padding: 14px;">
+    <a href="/" style="font-weight: 800;">{brand}</a>
+
+    <nav>
+      <a href="#features">Caracteristicas</a>
+      <a href="#como-funciona">Como funciona?</a>
+      <a class="btn">Contacto</a>
+    </nav>
+  </div>
+</header>

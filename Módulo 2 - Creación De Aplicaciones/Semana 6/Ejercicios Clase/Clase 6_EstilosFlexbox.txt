@@ -1,0 +1,54 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: gray;
+    background-size: 500px;
+    
+
+}
+
+.item-1{
+    background-color: gray;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.item-2{
+    background-color: blue;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.item-3{
+    background-color: green;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.item-4{
+    background-color: red;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.item-5{
+    background-color: yellow;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.item-5{
+    background-color: brown;
+    background-size: auto;
+    font-size: larger;
+    font-weight: bolder;
+}

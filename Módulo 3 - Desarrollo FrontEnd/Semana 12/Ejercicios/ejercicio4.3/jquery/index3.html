@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consumo de API - JQuery</title>
+        <!-- Estilos exclusivos para esta página -->
+        <link rel="stylesheet" href="styles-index3.css">
+    </head>
+    <body>
+        <h1>Lista de Usuarios:</h1>
+        <ul id="user-list" aria-live="polite">
+            <li>Cargando...</li>
+        </ul>
+
+        <!-- Carga de jQuery desde CDN. Se ha eliminado el atributo 'integrity' porque causaba
+             un error de SRI en el navegador (hash desactualizado). Si quieres SRI, actualiza
+             el hash al proporcionado por el CDN oficial o sirve jQuery localmente. -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        
+        <script src="app-jquery.js"></script>
+    </body>
+</html>

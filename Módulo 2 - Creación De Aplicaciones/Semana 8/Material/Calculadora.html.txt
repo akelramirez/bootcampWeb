@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esta web refleja un ejercicio basico</title>
+   <!--Referenciamos el archivo que contine los estilos--> 
+    <link rel="stylesheet" href="Calculadora.css">
+</head>
+<body>
+    <!--Creamos un contenedor para nuestra calculadora-->
+    <div class="calculadora">
+        <input type="text" class="screen" id="pantalla" disabled>
+        <div class="btn">
+            <button type="button" class="operador" value="+">+</button>
+            <button type="button" class="operador" value="-">-</button>
+            <button type="button" class="operador" value="*">&times;</button>
+            <button type="button" class="operador" value="/">&divide;</button>
+
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+
+            <button type="button" value="0">0</button>
+            <button type="button" value=".">.</button>
+            <button type="button" class="clear" value="clear">C</button>
+
+            <button type="button" class="equal" value="=">=</button>
+        </div>
+    </div>
+    <!--Referenciamos el archivo que contine la lógica para operar nuestra calculadora-->
+    <script src="Calculadora.js"></script>
+</body>
+</html>

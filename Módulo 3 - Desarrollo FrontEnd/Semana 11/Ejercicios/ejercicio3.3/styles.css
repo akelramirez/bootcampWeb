@@ -1,0 +1,57 @@
+Body {
+    font-family: Arial, sans-serif;
+    background-color: #82a1bc;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bloque: header */
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Elemento: title dentro de header */
+.header__title {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Bloque: data-container (Contenedor principal de los datos) */
+.data-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bloque: item (Representa un elemento individual de la API) */
+.item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid #0056b3;
+    border-radius: 4px;
+}
+
+/* Elementos dentro del item */
+.item__title {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 0;
+}
+
+.item__body {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Modificador: item--highlight (Estilo opcional para destacar un elemento) */
+.item--highlight {
+    border-left-color: #28a745;
+    background-color: #e9f7ef;
+}

@@ -1,0 +1,38 @@
+header{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-style: italic;
+    font-weight: 500;
+    color: red;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    /*flex-direction: row;*/
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    gap: 1em;
+}
+
+.item-5{
+  background-color: blue;
+}
+
+.item-6{
+    background-color: blue;
+    color: white;
+}
+
+.item-7 {
+    background-color: red;
+    color: white;
+}
+footer{
+    position: Fixed;
+    bottom: 0;
+    color: red;
+    }

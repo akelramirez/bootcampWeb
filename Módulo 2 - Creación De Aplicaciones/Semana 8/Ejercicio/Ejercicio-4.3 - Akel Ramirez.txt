@@ -1,0 +1,8 @@
+Hola, buenas tardes.
+
+Anexo las ligas de los Repositorios en GitHub del Ejercicio 4.3 Semana 8.
+
+
+https://github.com/akelramirez/ejercicio-4.3-arrayparticipantes.git
+
+https://github.com/akelramirez/ejercicio-4.3-array-libros.git

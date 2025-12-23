@@ -1,0 +1,18 @@
+---
+const { title = "Mi sitio en astro", tagLine = "Rapido y facil :)" } =
+  Astro.props;
+---
+
+<section style="padding-top;0">
+  <div class="container">
+    <h1 style="margin: 0 0 8px; font-size: 36px; line-height: 1,1;">
+      {title}
+    </h1>
+
+    <p class="muted" style="margin: 0  0 14px; max-width: 60ch;">{tagLine}</p>
+    <div style="display: flex; gap:10px; flex-wrap: wrap;">
+      <a class="btn" href="#features"> Ver Caracteristicas</a>
+      <a class="btn" href="#como-funciona"> Como funciona?</a>
+    </div>
+  </div>
+</section>

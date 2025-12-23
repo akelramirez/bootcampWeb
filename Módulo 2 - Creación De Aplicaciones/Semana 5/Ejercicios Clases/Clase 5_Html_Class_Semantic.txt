@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esta web refleja un ejercicio basico</title>
+    <link rel="stylesheet" href="Estilos.css">
+</head>
+
+<body>
+    <!--Esta pagina web, sirve como introucción a HTML-->
+    <Header>Este es el encabezado</Header>
+    <Main>Ésta página presenta elementos básicos de HTML</Main>
+    <Section>Seccion 1 - Elementos de bloque
+        <h1> H1 Titulo es un elemento de bloque</h1><h6> H6 Subtitulo es otro elemento de bloque</h6>
+    </Section>
+    <Section> Section 2 - Elementos en linea
+        <a href=https://uvm.mx> Please click on this link to go to UVM</a>
+    <!--    <label>Label es otro elemento en linea</label>-->
+    </Section>  
+    <Article> Articulo Lorem ipsum 
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <blockquote> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </blockquote>
+        <strong>para resaltar el texto</strong>
+        <b>otra forma de resaltar el texto</b>
+    </Article>
+    <Section>Section 4 - Listas
+        <!--<ul>
+            <li>Alejandro</li>
+            <li>Aldo</li>
+            <li>Israel</li>
+        </ul> -->
+        <ol type = "1">
+            <li class="listdata" id="Alejandrolist">Alejandro</li>
+            <li>Aldo</li>
+            <li>Israel</li>
+        </ol>
+    </Section>
+    <div id = "divimagenes">Imagenes
+        <img src="C:\Users\Alejsndro\Downloads\UVM Logo.jfif"
+            width = "50px" height="50px" alt = "imagen no disponible por favor contacta a tu administrador">
+    </div>
+    <div id = "Tablas">Tablas
+        <Table>
+            <Tr>  
+                <Th>Alumnos </Th>
+                <Th>Proyectos </Th>
+            </Tr>
+                <Td>Alejandro </Td>
+                <Td>Proyecto 1 </Td>
+            <Tr>
+                <Td>Israel </Td>
+                <Td>Proyecto 2 </Td>
+            </Tr>
+        </Table>
+    </div>
+    <div>Formulario 
+        <form action="/procesar formulario" method="post">
+            <label class="Labels" id="nombres" for="nombre">Nombres:</label>
+            <input Class="Textbox" type="text" id="nombre" name ="nombrename">
+            <label class="Labels" for="apellidos">Apellidos:</label>
+            <input Class="Textbox" type="text" id="apellidos" name ="appellidos">
+
+            <label class="Labels" for="email">Correo electronico:</label>  
+            <input type="email" id="email" name ="emailname">
+            
+            <input type="submit" value="Enviar">
+        </form> 
+    </div>
+    <div>Menu
+        <Select id="Menu" name = "Menu">
+            <Option value="Opc1">Opciones 1</Option>
+            <Option id="Opcion2" value="Opc2">Opciones 2</Option>
+            <Option value="Opc3">Opciones 3</Option> 
+        </Select>
+    </div>      
+    <footer>Pie de Pagina</footer>
+    <iframe style="width: 300px; height: 200px;" src="https://www.youtube.com/embed/K8KgP2aOXcA"></iframe>
+</body>
+</html>

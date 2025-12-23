@@ -1,0 +1,24 @@
+---
+const features = Astro.props.features ?? [
+  { title: "Rendimiento", desc: "HTML estatico por default y carga rapido" },
+  { title: "Compoinentes", desc: "Estructura clara y facil de escalar" },
+  { title: "Simplicidad", desc: "Ideal para landings y blogs" },
+];
+---
+
+<section id="features">
+  <div class="container">
+    <h2 style="margin: 0 0 10px;">Caracteristicas</h2>
+
+    <div class="grid grid-3">
+      {
+        features.map((feature) => (
+          <article class="card">
+            <h3 style="margin: 0 6px; font-size:16px">{feature.title}</h3>
+            <p class="muted">{feature.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

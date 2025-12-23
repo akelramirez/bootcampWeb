@@ -1,0 +1,136 @@
+/*let persona = {
+    nombre: "Juan",
+    edad: 25,
+    saludar: function() {
+        console.log("Hola, soy " + this.nombre);
+        console.log("Mi edad es: " + this.edad);        
+    }
+};
+
+persona.saludar
+
+let carro = {
+    nombre: "mazda3",
+    marca: "mazda",
+  
+    saludar: function(){
+        console.log("La marca de carro es " +this.nombre)
+}
+}
+
+//Acceder a las propiedades utilizando la notación de punto
+console.log(persona.nombre); //salida: Juan
+console.log(persona.edad); //Salida: 25
+
+console.log(carro.nombre);
+//Llamar a un metodo del objeto utilizando la notacion de numero
+persona.saludar(); //Salida Hola, soy Juan
+carro.saludar();
+//carro.presentacion();
+//Acceder a las propiedades utilizando la notación de corchetes
+let propiedad = "edad";
+console.log(persona[propiedad]);//Salida Juan
+
+
+//Definicion de una clase persona
+class Persona {
+    
+    //Constructor para inicializar propiedades
+    constructor(nombres, edades) {
+        this.nombre = nombres;
+        this.edad = edades;
+    }    
+
+    //Metodo de la clase
+    saludar() {
+        console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+    }
+}
+
+//Creación de una instancia de la clase Persona
+let persona1 = new Persona ("Ana", 30);
+let persona2 = new Persona ("Emanuel",20);
+let persona3 = new Persona ("itzel",20);
+let persona4 = new Persona ("israel",20);
+let persona5 = new Persona ("jacabo",20);
+
+
+//Acceso a las propiedades y llamada al método de la clase
+console.log(persona1.nombre); //Salida: Ana
+persona1.saludar();          //Salida: Hola, Soy Ana y tengo 30 años.
+console.log(persona2.edad);   //Salida:20
+persona2.saludar();          //Salida: Hola, Soy Ana y tengo 30 años.
+*/
+
+
+//Encapsulamiento
+function Bootcamp (clase){
+    let Topico = "Web Development"; //variable privada
+    this.clase = clase;
+
+    this.getTopico = function(){
+        return Topico;
+    }; // Método publico para acceder a la variable privada
+
+    this.setTopico = function(nuevoTopico){
+        if (nuevoTopico != null){
+           Topico = nuevoTopico; //Método público para modificar la variable privada
+        };
+    };
+}
+
+//console.log("variable privada" + Topico ) // error
+const G6 = new Bootcamp("BCPD WEB G6");
+console.log(G6.getTopico()); // Salida: Web Development
+G6.setTopico("Data Analysis");
+console.log(G6.getTopico()); // Salida: Data Analysis
+
+
+
+const edadsimbolo = Symbol("edad");
+class Persona {
+    
+    //Constructor para inicializar propiedades
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.[edadsimbolo] = 30; //Propiedad privada
+    }
+
+    //Metodo de la clase
+    getedad() {
+        return this [edadsimbolo];
+    }
+}
+
+console.log(edadsimbolo); //error
+const Alejandro = new Persona("Alejandro");
+console.log(Alejandro.getedad); //Salida: 30
+
+class persona {
+    
+    #edad; //campo privado
+
+    constructor(nombre){
+        this.nombre = nombre;
+        this.#edad = 30;
+    };
+
+    // Método público para acceder al campo privado
+    getEdad() {
+        return this.#edad; 
+    };
+
+    // Método público para modificar el campo privado
+    setEdad(nuevaEdad) {
+        if (nuevaEdad > 0) {
+            this.#edad = nuevaEdad; 
+        };
+    };
+}
+
+//console.log("my edad es: " + #edad)// error
+const Alejandro = new Persona("ALejandro");
+console.log(Alejandro.getEdad()); // Salida: 30
+Alejandro.setEdad(40);
+console.log(Alejandro.getEdad()); // Salida: 40
+*/

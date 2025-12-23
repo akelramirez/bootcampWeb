@@ -1,0 +1,190 @@
+//Uso del DOM (DOcument Object Model) para agregar un manejador de eventos
+document.addEventListener('DOMContentLoaded', function() {
+    
+    //Uso del DOM (DOcument Object Model) para acceder a un elemento a través de su ID con getElement
+    const pantalla = document.getElementById('pantalla');
+
+    //Uso del DOM (DOcument Object Model) para acceder a varios elementos a través de su Clase con queryselector
+    const botones = document.querySelector('.btn');
+    
+    //Constante calculadora de tipo objeto que contiene varios elementos inicializados
+    const calculadora = {
+        //Propiedad que contiene el valor que se mostrará en la pantalla
+        displayvalue: '0',
+        //Propiedad que contendrá el valor del primer operando (ej: 82123.25)
+        primerOperando: null,
+        //Bandera de tipo Boolean que utilizaremos para validar si necesitamos un segundo operando
+        EsperandoSegundoOperando: false,
+        //Porpiedad que contendrá el operador (ej: +,-,/, etc.)
+        operador: null,
+    };
+
+    //Función para actualizar lo que se va mostrando en la pantalla
+    function actualizarPantalla() {
+        //Accedemos a la propiedad "value" que declaramos en nuestro HTML (ej. 1,2,3,etc.)
+        //es otra alternativa en vez de acceder a la propiedad "Text"
+        //y le asignamos ese valor a la propiedad de displayvalue de nuestro objeto calculadora
+        pantalla.value = calculadora.displayvalue;
+    }
+
+    //Función para controlar las acciones cada que se escriba un numero u operador en el teclado
+    //Se recibe como parametro de entrada un evento (event) - En éste caso el evento es de tipo "Keydown"
+    //La propiedad "Key" es una propiedad reservada cuando hacemos uso de "Keydown o Keyup"
+    //y se usa especificamente para escuchar la tecla presionada
+    function ManejadordeTeclado(event) {
+        if (event.key >= 0 && event.key <= 9) {
+            //Se manda a llamar otra funcion para manejar la entrada de dígitos
+            InsertarDigito(event.key);
+        } else if (event.key === '.') {
+            //Se manda a llamar otra funcion para manejar la entrada de decimales
+            InsertarDecimal();
+        } else if (event.key === '=' || event.key === 'Enter') {
+            //Se manda a llamar otra funcion para manejar la entrada del operador igual "="
+            ManejarOperadores(calculadora.Operador);
+        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+            //Se manda a llamar otra funcion para manejar la entrada del resto de operadores
+            ManejarOperadores(event.key);
+        } else if (event.key === 'Escape') {
+            //Se manda a llamar otra funcion para manejar la entrada del operador clear/borrar
+            resetcalculadora();
+        }
+        //Se manda a llamar otra funcion para actualizar los datos en pantalla
+        actualizarPantalla();
+    }
+
+    //Funcion para insertar digitos, validamos si la calculadora espera un segundo 
+    function InsertarDigito(digit) {
+        //Validamos si nuestra bandera que nos indica que necesitamos un segundo operador ésta encendida
+        if (calculadora.EsperandoSegundoOperando === true) {
+            //Asignamos el valor de digit a nuestra propiedad de displayvalue de nuestro objeto calculadora
+            calculadora.displayvalue = digit;
+            //Apagamos la bandera
+            calculadora.EsperandoSegundoOperando = false;
+        } else {
+            //En caso de que nuestra bandera éste apagada realizamos un if-else para validar si concatenamos más digitos
+            //Ejemplo de operador ternario que nos ayuda a comprimir la funcionalidad de if-else en una sola sentencia
+            //"calculadora.displayvalue === '0'", ésto equivale a decir If (calculadora.displayvalue === "0"):
+            //"? digit", ésto equivale a decir " si la condición anterior es verdadera entonces digit = el nuevo valor"
+            //": calculadora.displayvalue + digit", ésto equivale a decir "else: calculadora.displayvalue + digit"
+            calculadora.displayvalue = calculadora.displayvalue === '0' ? digit : calculadora.displayvalue + digit;
+        }
+    }
+
+    //Funcion que nos permite concatenar el "." decimal a nuestro numero actual, y recibimos como parametro de entrada "dot" = "."
+    function InsertarDecimal(dot) {
+        //Evaluamos si no existe punto decimal; 
+        //Includes es una función de javascript para buscar en un string un valor especifico
+        //En este ejemplo buscamos un "." dentro de lo que contiene calculadora.displayvalue
+        if (!calculadora.displayvalue.includes(dot)) {
+            //En caso de que no se tenga ya un punto decimal, entonces se concatena el "." al entero
+            calculadora.displayvalue += dot;
+        }
+    }
+
+    //Funcion para manejar los operadores, recibimos el siguiente operando
+    function ManejarOperadores(SiguienteOperador) {
+        //Destructuramos (partimos)  las propiedades del objeto calculadora
+        const { primerOperando, displayvalue, operador } = calculadora;
+        //definimos como constante lo que tenemos en la pantalla antes de recibir el siguiente operando
+        //parseFloat nos ayuda en Javascript a convertir un string a tipo flotante (similar al decimal)
+        const inputValue = parseFloat(displayvalue);
+
+        //Validamos si tenemos un operador ej; +,-,* recordando que la primer vez lo pusimos como null
+        //y si ademas nuestra bandera de EsperandoSegundoOperando es True
+        //En caso de que ambas condiciones se cumplan, entonces asignamos el valor recibido a la propiedad de operador y salimos
+        if (operador && calculadora.EsperandoSegundoOperando) {
+            calculadora.operador = SiguienteOperador;
+            return;
+        }
+        //Validamos si mi primer operando (lo que está a la iquierda del signo) es nulo
+        //Entonces le asignamos el valor que tenemos en pantalla al primerOperando
+        if (primerOperando == null) {
+            calculadora.primerOperando = inputValue;
+        //En caso contrario validamos si tenemos un operador (+,-,/, etc.)
+        } else if (operador) {
+            //En caso de que si tengamos un operador le asignamos a una constante ya sea el valor primerOperando 
+            const currentValue = primerOperando || 0;
+            //Declaramos otra constante result que contendrá el valor resultante del objeto "realiza calculo" (el cual se encarga de hacer las operaciones aritmeticas)
+            const result = RealizaCalculo[operador](currentValue, inputValue);
+            //Pasamos el resultado final a la pantalla
+            calculadora.displayvalue = String(result);
+            //le pasamos el resultado a la propiedad de primerOperando para que podamos seguir realizando más operaciones
+            calculadora.primerOperando = result;
+        }
+
+        //Seteamos nuestra bandera de esperando segundo operador a tru
+        calculadora.EsperandoSegundoOperando = true;
+        //Al finalizar le pasamos ahora el valor del operador recibido a la propiedad de operador
+        calculadora.operador = SiguienteOperador;
+    }
+
+    //Objeto que contiene como propiedades, los diferentes operadores cuyo valor es una función anónima la cual realiza la operación deseada entre el primer y segundo operador
+    const RealizaCalculo = {
+        //Esto se pudo haber definido como:
+        //Division = funcion dividir (primerOperando, segundo operador) y se hubiese creado una funcion aparte para hacer la operación aritmentica
+        //Sin embargo para simplificar '/' equivale al nombre de la propiedad, : equivale al signo de igual,
+        //(primerOperando, SegundoOperando) => primerOperando / SegundoOperando, equivale a haber creado una función por separado y luego mandarla a llamar
+
+        '/': (primerOperando, SegundoOperando) => primerOperando / SegundoOperando,
+        '*': (primerOperando, SegundoOperando) => primerOperando * SegundoOperando,
+        '+': (primerOperando, SegundoOperando) => primerOperando + SegundoOperando,
+        '-': (primerOperando, SegundoOperando) => primerOperando - SegundoOperando,
+        '=': (primerOperando, SegundoOperando) => SegundoOperando,
+    };
+
+    //Funcion para resetear las propiedades del objeto calculadora cuando se hace click en el boton de clear
+    function resetcalculadora() {
+        calculadora.displayvalue = '0';
+        calculadora.primerOperando = null;
+        calculadora.EsperandoSegundoOperando = false;
+        calculadora.operador = null;
+    }
+
+    //Uso del DOM (DOcument Object Model) para agregar un manejador de eventos para permitir escuchar cada que se da click a un boton
+    //Se recibe como parametro de entrada un evento (event) - En éste caso el evento es de tipo "click"
+ 
+    botones.addEventListener('click', (event) => {
+        //Destructuramos (partimos)  las propiedades del evento
+        //la propiedad de target nos dice el elemento del html al cual le hicimos click
+        const { target } = event;
+        //la propiedad de value nos da el valor de ese elemento ej; 5,6,7, etc.
+        const { value } = target;
+
+        //Validamos si el elemento que le hicimos click en nuestro html no es de tipo boton, entonces no hacemos nada y salimos de la función
+
+        if (!target.matches('button')) {
+            return;
+        }
+
+        //Si el elemento clickeado fue de tipo boton, entonce utlizamos un switch, que nos permite tener varios case, para evitar tener muchos if-else
+        switch (value) {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '=':
+                //Mandamos a llamar la funcion para manejar los operadores
+                ManejarOperadores(value);
+                break;  
+            case '.':
+                //Mandamos a llamar la función para insertar el punto decimal
+                InsertarDecimal(value);
+                break;
+            case 'clear':
+                //Mandamos llamar la función para limpiar todo lo de la pantalla e inicializar variables
+                resetcalculadora();
+                break;
+            default:
+                //Mandamos a llamar la función de insertar dígito
+                InsertarDigito(value);
+        }
+        //Mandamos a llamar la función de actualizar pantalla
+        actualizarPantalla();
+    });
+
+    //Uso del DOM (DOcument Object Model) para agregar un manejador de eventos para permitir escuchar cada que se presiona una tcla en el teclado
+    //Manda a llamar a otra funcion "ManejadordeTeclado" para especificar que sucede con cada tecla.
+    document.addEventListener('keydown', ManejadordeTeclado);
+    //Manda a llamar otra funcion para actualizar la pantalla.
+    actualizarPantalla();
+});

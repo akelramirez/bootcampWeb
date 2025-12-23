@@ -1,0 +1,128 @@
+:root{
+    --card-bg: #fff;
+    --accent: #4CAF50;
+    --muted: #f4f4f4;
+    --text: #333;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgba(137,132,132,0.66);
+    margin: 0;
+    padding: 20px; /* para separacion en pantallas pequeñas */
+}
+
+/* Contenedores principales (formularios / bienvenida) */
+.card, div {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px; /* se adapta a pantallas mayores */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Oculta todos los contenedores por defecto */
+#login-container, #register-container, #welcome-container {
+    display: none;
+}
+
+/* Muestra el contenedor que tenga la clase 'active' */
+.active {
+    display: block !important;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--accent);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* botones secundarios */
+#register-toggle, #login-toggle, #logout-btn {
+    background-color: var(--muted);
+    color: var(--text);
+    border: 1px solid #ccc;
+    margin-top: 12px;
+}
+
+#register-toggle:hover, #login-toggle:hover, #logout-btn:hover {
+    background-color: #e9e9e9;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Resultados de la API en la vista de ingreso */
+#api-result {
+    background: #f6f6f6;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: left;
+    white-space: pre-wrap; /* Para manejar saltos de línea y formato */
+    max-height: 220px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+
+/* Media queries: ajustes para pantallas pequeñas y grandes */
+@media (max-width: 480px) {
+    .card, div {
+        padding: 18px;
+    }
+
+    h2 { font-size: 1.2rem; }
+    button { font-size: 0.95rem; padding: 10px; }
+}
+
+@media (min-width: 900px) {
+    body { padding: 40px; }
+    .card, div { max-width: 480px; }
+}

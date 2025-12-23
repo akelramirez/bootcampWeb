@@ -1,0 +1,276 @@
+:root {
+    --color-white: #ffffff; 
+    --color-beige:  #fce4b2; 
+    --color-orange: #ffa500;
+    --color-blue: #003399;
+    --color-black: #000000;
+    --color-grey: #acabab;
+    --color-siete: #ccc;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Encabezado */
+
+header {
+  background: var(--color-white);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--color-orange);
+  font-size: 30px;
+}
+
+header input {
+  padding: 4px;
+  font-size: 13px;
+}
+
+.menu__inicio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-grey);
+  padding: 10px 20px;
+}
+
+.menu__inicio__lista {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.menu__inicio__lista li a {
+  text-decoration: none;
+  color: var(--color-blue);
+  font-size: 15px;
+  padding: 5px;
+  position: relative;
+}
+
+/* Contenedor principal */
+
+.container {
+  display: grid;
+  grid-template-columns: 20% 55% 25%;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Columna Uno*/
+
+.columna_uno {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.box {
+  border: 1px solid var(--color-black);
+  padding: 8px;
+  background: var(--color-siete);
+}
+
+.box h3 {
+  margin-top: 7%;
+  font-size: 18px;
+  color: var(--color-blue);
+}
+
+.box ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.box ul li {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.box ul li p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.box ul li a {
+  color: var(--color-blue);
+  font-size: 15px;
+}
+
+#publicidad {
+  background-color: var(--color-beige);
+}
+
+/* Contenido Central */
+
+.columna_central {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article {
+  display: flex;
+  gap: 10px;
+}
+
+.article img {
+  width: 300px;
+  height: 150px;
+  background: var(--color-grey);
+}
+
+.article h2 {
+  margin: 0;
+  font-size: 25px;
+  color: var(--color-black);
+}
+
+.article p {
+  font-size: 15px;
+}
+
+.article a {
+  color: var(--color-blue);
+  font-size: 15px;
+}
+
+/* Columna derecha */
+
+.columna_dos .box {
+  background: var(--color-white);
+  border: 2px solid var(--color-orange);
+  margin: 10px;
+}
+
+.columna_dos h3 {
+  font-size: 20px;
+  background: var(--color-orange);
+  color: var(--color-black);
+  padding: 5px;
+}
+
+.columna_dos p {
+  font-size: 15px;
+}
+
+.columna_dos a {
+  font-size: 15px;
+  color: var(--color-blue);
+}
+
+/* Footer */
+
+.menu__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-siete);
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para la lista de enlaces */
+.menu__list__footer {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.menu__list__footer li {
+  padding: 0;
+  position: relative;
+  font-size: 15px;
+}
+
+/* Crear los separadores verticales */
+.menu__list__footer li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 1px;
+  background-color: var(--color-black);
+}
+
+.menu__list__footer a {
+  text-decoration: none;
+  color: var(--color-blue);
+  font-size: 15px;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.copyright {
+  font-size: 15px;
+  color: var(--color-black);
+}
+
+/* Responsividad */
+
+/* Tablets: 2 columnas */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 30% 70%;
+  }
+
+  .columna_dos {
+    grid-column: 1 / -1;
+  }
+
+  .menu__inicio__lista,
+  .menu__list__footer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .article {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .article img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu__inicio__lista,
+  .menu__list__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menu__list__footer li:not(:first-child)::before {
+    display: none; 
+  }
+}

@@ -1,0 +1,5 @@
+Hola, buenas tardes.
+
+Anexo liga del Repositorio en GitHub del Ejercicio 3.2 Semana 7
+
+https://github.com/akelramirez/uvm-ejercicio-3.2.git

@@ -1,0 +1,39 @@
+//Herencia y Polimorfismo
+
+// Clase Padre
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} hace un ruido.`);
+    }
+}
+
+// Clase Hijo "Dog" que hereda el atributo de nombre de la clase Padre Animal
+class Dog extends Animal {
+//Speak es un metodo que se hereda de la clase padre, pero que toma la forma dependiendo de la clase hijo (Polimorfismo)
+    speak() {
+        console.log(`${this.name} ladra.`);
+    }
+}
+
+// Clase Hijo "Cat" que hereda el atributo de nombre de la clase Padre Animal
+class Cat extends Animal {
+//Speak es un metodo que se hereda de la clase padre, pero que toma la forma dependiendo de la clase hijo (Polimorfismo)
+    speak() {
+        console.log(`${this.name} maúlla.`);
+    }
+}
+
+// Objeto de la clase hijo "Dog" 
+const dog = new Dog('Perro');
+
+// Objeto de la clase hijo "Cat"
+const cat = new Cat('Gato');
+
+//Accdemos al metodo speak de cada objeto
+dog.speak(); // Perro ladra.
+cat.speak(); // Gato maúlla.
+
